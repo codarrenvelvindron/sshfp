@@ -62,6 +62,8 @@ def create_sshfp(hostname, keytype, keyblob, fphash):
 		keytype = "3"
 	elif  keytype == "ssh-ed25519":
 		keytype = "4"
+	elif  keytype == "ssh-xmss":
+		keytype = "5"
 	else:
 		return ""
 	try:
@@ -355,9 +357,9 @@ def main():
 			action="append",
 			type="choice",
 			dest="algo",
-			choices=["rsa", "dsa", "ecdsa", "ed25519"],
+			choices=["rsa", "dsa", "ecdsa", "ed25519", "xmss"],
 			default=[],
-			help="key type to fetch (may be specified more than once, default dsa,rsa,ecdsa,ed25519)")
+			help="key type to fetch (may be specified more than once, default dsa,rsa,ecdsa,ed25519,xmss)")
 	parser.add_option("-n", "--nameserver",
 			action="store",
 			type="string",
